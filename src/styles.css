@@ -1,1 +1,273 @@
-/* You can add global styles to this file, and also import other style files */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 50px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type="number"], input[type="text"] {
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-50 {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-50:hover {
+  background-color: #555;
+}
+
+#pie-chart-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#balance-container {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+#transaction-list-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#transaction-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.income-item {
+  background-color: #cfc;
+}
+
+.expense-item {
+  background-color: #fcc;
+}
+
+.transaction-label {
+  font-weight: bold;
+}
+
+.transaction-amount {
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+body {
+  background: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+}
+
+   h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 50px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type="number"], input[type="text"] {
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-50 {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-50:hover {
+  background-color: #555;
+}
+
+#pie-chart-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#balance-container {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+#transaction-list-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#transaction-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#pie-chart-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#pie-chart-card {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  animation: grow 0.5s ease-out;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+#pie-chart {
+  width: 20%;
+  height: auto;
+}
+
+.income-item {
+  background-color: #cfc;
+}
+
+.expense-item {
+  background-color: #fcc;
+}
+
+.transaction-label {
+  font-weight: bold;
+}
+
+.transaction-amount {
+  font-weight: bold;
+}
+.input-container {
+  margin-bottom: 20px;
+  position: relative;
+  animation: slide-in 0.5s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#pie-chart {
+  animation: grow 0.5s ease-out;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+    

@@ -1,13 +1,141 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Finapp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="styles" type="text/css" href="styles.css" media="screen" />
+  </head>
+  <body>
+    <h1>Expense Tracker</h1>
+    <div class="input-container">
+      <label for="amount-input">Amount:</label>
+      <input type="number" id="amount-input">
+      <label for="label-input">Label:</label>
+      <input type="text" id="label-input">
+      <input type="checkbox" id="income-checkbox" name="income-checkbox">
+      <label for="income-checkbox">Income</label>
+      <input type="checkbox" id="expense-checkbox" name="expense-checkbox">
+      <label for="expense-checkbox">Expense</label>
+      <button class="button-50" onclick="addExpense()">Add Expense</button>
+    </div>
+</div>
+    </div>
+    <div id="pie-chart-container">
+      <canvas id="pie-chart"></canvas>
+      
+    </div>
+    <div id="pie-chart-container">
+      <canvas id="pie-chart"></canvas>
+    </div>
+    <div id="balance-container"></div>
+    <!--<button class="button-50" onclick="showTransactions()">Transactions</button>-->
+    <script>
+      var expenses = [];
+      var pieChart;
+      
+      var incomeCheckbox = document.getElementById("income-checkbox");
+var expenseCheckbox = document.getElementById("expense-checkbox");
+var balance = 0;
+
+function addExpense() {
+  var amount = parseFloat(document.getElementById("amount-input").value);
+  var label = document.getElementById("label-input").value;
+  var isIncome = incomeCheckbox.checked;
+  var isExpense = expenseCheckbox.checked;
+  
+  if (isIncome && !isExpense) {
+    balance += amount;
+  } else if (!isIncome && isExpense) {
+    balance -= amount;
+  }
+  
+  if (!isNaN(amount) && label) {
+    expenses.push({label: label, amount: amount});
+    updateChart();
+    clearInputs();
+  }
+  
+  incomeCheckbox.checked = false;
+  expenseCheckbox.checked = false;
+  
+  document.getElementById("balance-container").innerHTML = "Current balance: $" + balance.toFixed(2);
+}
+
+      
+      function updateChart() {
+        if (pieChart) {
+          pieChart.destroy();
+        }
+        pieChart = new Chart(document.getElementById('pie-chart'), {
+          type: 'pie',
+          data: {
+            labels: expenses.map(e => e.label),
+            datasets: [{
+              data: expenses.map(e => e.amount),
+              backgroundColor: generateColors(expenses.length)
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            tooltips: {
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var label = data.labels[tooltipItem.index];
+                  var amount = data.datasets[0].data[tooltipItem.index];
+                  return label + ": $" + amount.toFixed(2);
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      function generateColors(numColors) {
+        var colors = [];
+        for (var i = 0; i < numColors; i++) {
+          colors.push(getRandomColor());
+        }
+        return colors;
+      }
+      
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      
+      function clearInputs() {
+        document.getElementById("amount-input").value = "";
+        document.getElementById("label-input").value = "";
+      }
+      function showCurrentBalance() {
+  var initialBalance = 0; 
+  var totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  var currentBalance = initialBalance - totalExpenses;
+  alert("Your current balance is ₹" + currentBalance.toFixed(2));
+}
+function showTransactions() {
+  var transactionContainer = document.getElementById("transaction-container");
+  transactionContainer.innerHTML = ""; 
+  for (var i = 0; i < transactions.length; i++) {
+    var transaction = transactions[i];
+    var transactionItem = document.createElement("div");
+    var transactionAmount = transaction.amount.toFixed(2);
+    if (transaction.isIncome) {
+      transactionItem.classList.add("income");
+      transactionItem.textContent = transaction.label + " (+" + transactionAmount + ")";
+    } else {
+      transactionItem.classList.add("expense");
+      transactionItem.textContent = transaction.label + " (-" + transactionAmount + ")";
+    }
+    transactionContainer.appendChild(transactionItem);
+  }
+}
+  </script>
+  </body>
 </html>
